@@ -5,14 +5,15 @@ let socket
 
 let sending = false;
 
-function send({ host, port, timeout }) {
+function send({ host, port, count, timeout }) {
   if (sending) return
   sending = true;
   for (i = 0; i <= 10; i++) {
     const worker = new Worker('./worker.js', {
       workerData: {
         host,
-        port
+        port,
+        count
       }
     });
 
