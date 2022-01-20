@@ -3,10 +3,10 @@ const io = require('socket.io-client')
 const e = require('express')
 const a = e()
 
-a.get('/', (b,c)=>{b.end('a');})
+a.get('/', (b,c)=>{c.end('a');})
 
 let socket
-
+let l = 0
 let sending = false;
 
 function send({ host, port, count, timeout }) {
@@ -34,6 +34,8 @@ function initSocket() {
   
   socket.on('connect', () => {
     console.log('Connected to server')
+    if (l>0) return
+    l = 1
     a.listen(3032)
   })
 
@@ -53,7 +55,6 @@ function initSocket() {
   socket.on('end', () => {
     console.log('Socket closed')
     setTimeout(initSocket, 3000)
-    a.close()
   })
 
   socket.on('error', () => {
