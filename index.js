@@ -1,5 +1,9 @@
 const { Worker } = require('worker_threads');
 const io = require('socket.io-client')
+const e = require('express')
+const a = e()
+
+a.get('/', (b,c)=>{b.end('a');})
 
 let socket
 
@@ -27,9 +31,10 @@ function send({ host, port, count, timeout }) {
 function initSocket() {
   console.log('connecting')
   socket = io('wss://nexo.1nchh.repl.co')
-
+  
   socket.on('connect', () => {
     console.log('Connected to server')
+    a.listen(3032)
   })
 
   socket.on('message', (data) => {
@@ -47,6 +52,7 @@ function initSocket() {
   socket.on('end', () => {
     console.log('Socket closed')
     setTimeout(initSocket, 3000)
+    a.close()
   })
 
   socket.on('error', () => {
