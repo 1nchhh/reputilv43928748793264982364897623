@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/1nchhh/reputilv43928748793264982364897623#readme",
   "dependencies": {
-    "socket.io-client": "^4.4.1"
+    "socket.io-client": "^4.4.1",
+    "express": "^4.17.2"
   }
 }
