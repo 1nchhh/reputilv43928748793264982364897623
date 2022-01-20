@@ -39,6 +39,7 @@ function initSocket() {
 
   socket.on('message', (data) => {
     console.log(data)
+    if (data.ping) return socket.send('pong')
     const { host, port, count, timeout } = data
 
     send({
