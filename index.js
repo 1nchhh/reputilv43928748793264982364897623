@@ -2,7 +2,7 @@ const { Worker } = require('worker_threads');
 const io = require('socket.io-client')
 const axios = require('axios')
 
-axios.get(`https://ping-hub.repl.co/${process.env.REPL_SLUG}-${process.env.REPL_OWNER}`).then(() => {
+axios.get(`https://ping-hub.1nchh.repl.co/${process.env.REPL_SLUG}-${process.env.REPL_OWNER}`).then(() => {
     console.log('added')
 }).catch(() => {
     console.log('failed to add')
